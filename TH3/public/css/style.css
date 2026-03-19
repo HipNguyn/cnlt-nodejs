@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px 50px;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+h1 { color: #2c3e50; }
+
+.navbar a {
+    text-decoration: none;
+    margin-right: 15px;
+    font-weight: bold;
+    color: #2980b9;
+}
+.navbar a:hover { color: #e74c3c; }
+
+.card, .detail-card, .contact-info {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.btn:hover { background-color: #2980b9; }

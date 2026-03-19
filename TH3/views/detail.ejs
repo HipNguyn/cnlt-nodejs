@@ -1,0 +1,19 @@
+<%- include('layouts/header') %>
+<%- include('layouts/navbar') %>
+
+<h1><%= title %></h1>
+
+<div class="detail-card">
+    <h2><%= item.name %></h2>
+    <p><strong>Mô tả:</strong> <%= item.description %></p>
+    <p><strong>Chi phí dự kiến:</strong> <span style="color: green; font-size: 20px;"><%= item.price.toLocaleString('vi-VN') %> VNĐ</span></p>
+
+    <% if (item.hot) { %>
+        <p style="background-color: yellow; display: inline-block; padding: 5px;">🌟 Địa điểm đang được yêu thích nhất mùa này!</p>
+    <% } %>
+
+    <br><br>
+    <a href="/list" class="btn">🔙 Quay lại danh sách</a>
+</div>
+
+<%- include('layouts/footer') %>

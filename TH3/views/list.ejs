@@ -1,0 +1,26 @@
+<%- include('layouts/header') %>
+<%- include('layouts/navbar') %>
+
+<h1><%= title %></h1>
+
+<div class="list-container">
+    <% items.forEach(item => { %>
+        <div class="card">
+            <h3><%= item.name %></h3>
+            <p><%= item.description %></p>
+            <p><strong>Giá:</strong> <%= item.price.toLocaleString('vi-VN') %> VNĐ</p>
+            
+            <!-- Sử dụng câu lệnh if/else để hiển thị trạng thái HOT -->
+            <% if (item.hot) { %>
+                <p style="color: red; font-weight: bold;">🔥 Địa điểm Nổi Bật</p>
+            <% } else { %>
+                <p style="color: gray;">📍 Trải nghiệm bình yên</p>
+            <% } %>
+
+            <a href="/detail/<%= item.id %>" class="btn">Xem chi tiết</a>
+        </div>
+        <br>
+    <% }) %>
+</div>
+
+<%- include('layouts/footer') %>
