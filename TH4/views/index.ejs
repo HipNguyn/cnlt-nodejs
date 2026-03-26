@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Trang chủ Blog</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Danh sách bài viết</h1>
+    <a href="/blogposts/new" class="btn btn-primary" style="margin-bottom: 20px;">+ Tạo bài viết mới</a>
+    
+    <div>
+        <% posts.forEach(post => { %>
+            <div class="post-card">
+                <h2><%= post.title %></h2>
+                <p><%= post.body.substring(0, 100) %>...</p> <!-- Chỉ hiện 100 ký tự đầu -->
+                
+                <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+                
+                <!-- Các nút chức năng -->
+                <a href="/blogposts/<%= post._id %>" class="btn btn-primary">Xem chi tiết</a>
+                <a href="/blogposts/edit/<%= post._id %>" class="btn btn-warning">Sửa</a>
+                
+                <!-- Nút Xóa (Phải dùng Form POST để bảo mật) -->
+                <form action="/blogposts/delete/<%= post._id %>" method="POST" style="display: inline-block;">
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa bài này không?');">Xóa</button>
+                </form>
+            </div>
+        <% }) %>
+    </div>
+</body>
+</html>

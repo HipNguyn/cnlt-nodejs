@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chi tiết bài viết</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="post-card">
+        <h1><%= post.title %></h1>
+        <!-- Dùng pre-wrap để giữ nguyên xuống dòng của văn bản -->
+        <p style="white-space: pre-wrap; font-size: 16px; line-height: 1.6;"><%= post.body %></p>
+    </div>
+    
+    <br>
+    <a href="/" class="btn btn-primary">🔙 Về trang chủ</a>
+    <a href="/blogposts/edit/<%= post._id %>" class="btn btn-warning">✏️ Sửa bài viết</a>
+</body>
+</html>

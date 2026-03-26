@@ -1,0 +1,30 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+.post-card {
+    background: #fff;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+.btn {
+    display: inline-block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+.btn-primary { background-color: #3498db; }
+.btn-warning { background-color: #f39c12; }
+.btn-danger { background-color: #e74c3c; }
+input, textarea { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
