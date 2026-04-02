@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo bài viết</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Tạo bài viết mới</h1>
+    
+    <form action="/blogposts/store" method="POST" class="post-card">
+        <p>
+            Tiêu đề:<br>
+            <input type="text" name="title" required>
+        </p>
+        <p>
+            Nội dung:<br>
+            <textarea name="body" rows="5" required></textarea>
+        </p>
+        <button type="submit" class="btn btn-primary">Lưu bài viết</button>
+    </form>
+    
+    <br>
+    <a href="/" class="btn btn-warning">🔙 Về trang chủ</a>
+</body>
+</html>
