@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Phân tích Request</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; padding: 20px; color: #333; max-width: 900px; margin: auto; background-color: #fff; }
+        h1 { text-align: center; color: #2c3e50; text-transform: uppercase; margin-bottom: 10px; }
+        .subtitle { text-align: center; color: #555; margin-bottom: 30px; font-size: 16px; }
+        
+        /* Hộp thông tin cơ bản */
+        .info-box { background-color: #f0fdf4; border-left: 5px solid #22c55e; padding: 20px; margin-bottom: 30px; }
+        .info-box h3 { margin-top: 0; color: #111; font-size: 16px; margin-bottom: 15px; }
+        .info-box ul { list-style-type: disc; padding-left: 20px; margin: 0; }
+        .info-box li { margin-bottom: 8px; font-size: 15px; }
+        
+        /* Màu sắc cho từng loại dữ liệu */
+        .val-method { color: #ef4444; font-weight: bold; }
+        .val-url { color: #3b82f6; }
+        .val-query { color: #d97706; font-weight: bold; }
+        
+        /* Phần Headers */
+        .headers-title { color: #2563eb; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px; margin-bottom: 20px; font-size: 22px; }
+        pre { background-color: #2b3e50; color: #f8f8f2; padding: 20px; border-radius: 4px; overflow-x: auto; font-family: Consolas, monospace; line-height: 1.5; font-size: 14px; }
+        
+        /* Nút bấm */
+        .btn-container { text-align: center; margin-top: 30px; }
+        .btn { display: inline-block; padding: 12px 24px; color: white; text-decoration: none; border-radius: 4px; font-weight: bold; margin: 0 10px; transition: 0.2s; font-size: 14px; }
+        .btn-gray { background-color: #9ca3af; }
+        .btn-gray:hover { background-color: #6b7280; }
+        .btn-orange { background-color: #f97316; }
+        .btn-orange:hover { background-color: #ea580c; }
+    </style>
+</head>
+<body>
+    <h1>Phân tích Request & Header</h1>
+    <p class="subtitle">Hệ thống đã bắt được các thông tin bạn gửi lên như sau:</p>
+
+    <div class="info-box">
+        <h3>Thông tin cơ bản (Request URL & Method):</h3>
+        <ul>
+            <li><b>Method:</b> <span class="val-method">{{method}}</span></li>
+            <li><b>URL gốc:</b> <span class="val-url">{{url}}</span></li>
+            <li><b>Query (Dữ liệu đính kèm):</b> <span class="val-query">{{query}}</span></li>
+        </ul>
+    </div>
+
+    <h2 class="headers-title">Dữ liệu Headers (Trình duyệt của bạn đang dùng)</h2>
+
+    <pre>{{headers}}</pre>
+
+    <div class="btn-container">
+        <a href="/" class="btn btn-gray">Quay lại Trang chủ</a>
+        <a href="/request?name=GiaBao&role=Admin&action=test" class="btn btn-orange">Thử đính kèm Query String</a>
+    </div>
+</body>
+</html>

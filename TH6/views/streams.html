@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang Streams</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #fff; color: #333; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .title { text-align: center; color: #8e44ad; text-transform: uppercase; margin-bottom: 30px; font-size: 28px; }
+        
+        
+        .stream-box { border: 1px solid #ddd; padding: 20px; border-radius: 5px; margin-bottom: 20px; }
+        .stream-box h3 { margin-top: 0; font-size: 18px; color: #000; }
+        
+     
+        .btn-blue { background-color: #3498db; color: white; border: none; padding: 10px 15px; text-decoration: none; display: inline-block; cursor: pointer; border-radius: 3px; font-size: 14px; }
+        .btn-blue:hover { background-color: #2980b9; }
+        
+        .btn-gray { background-color: #95a5a6; color: white; border: none; padding: 10px 20px; text-decoration: none; display: block; width: 120px; text-align: center; margin: 30px auto; cursor: pointer; border-radius: 3px; }
+        .btn-gray:hover { background-color: #7f8c8d; }
+        
+        .form-group { display: flex; gap: 15px; align-items: center; }
+        .form-input { flex-grow: 1; padding: 10px; border: 1px solid #ccc; border-radius: 3px; font-size: 14px; outline: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Tổng hợp 4 loại Streams</h1>
+
+        <div class="stream-box">
+            <h3>4.1 Readable Stream (Đọc File)</h3>
+            <a href="/api/read-story" target="_blank" class="btn-blue">Đọc file story.txt</a>
+        </div>
+
+        <div class="stream-box">
+            <h3>4.2 Writable Stream (Ghi File)</h3>
+            <form action="/api/write-log" method="POST" class="form-group">
+                <input type="text" name="logdata" class="form-input" placeholder="Nhập nội dung muốn ghi vào log.txt..." required>
+                <button type="submit" class="btn-blue">Ghi vào File Log</button>
+            </form>
+        </div>
+
+        <div class="stream-box">
+            <h3>4.3 Transform Stream (Biến đổi dữ liệu)</h3>
+            <a href="/api/stream-text" target="_blank" class="btn-blue">Đọc story.txt và BIẾN THÀNH CHỮ IN HOA</a>
+        </div>
+
+        <div class="stream-box">
+            <h3>4.4 Duplex Stream (Echo: Nhận và Trả)</h3>
+            <form action="/api/echo-duplex" method="POST" class="form-group">
+                <input type="text" name="echodata" class="form-input" placeholder="Gõ gì cũng được..." required>
+                <button type="submit" class="btn-blue">Test Echo Duplex</button>
+            </form>
+        </div>
+
+        <a href="/" class="btn-gray">Về trang chủ</a>
+    </div>
+</body>
+</html>

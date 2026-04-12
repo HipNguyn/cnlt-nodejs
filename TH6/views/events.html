@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang Sự kiện</title>
+    <style>
+        :root { --primary: #10b981; --bg: #f8fafc; --text: #1e293b; --card: #ffffff; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 40px 20px; display: flex; justify-content: center; }
+        .container { background: var(--card); padding: 40px; border-radius: 16px; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1); width: 100%; max-width: 600px; text-align: center; }
+        h1 { color: var(--primary); margin-top: 0; }
+        .alert { background: #d1fae5; color: #065f46; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #34d399; font-weight: 500; font-size: 16px;}
+        .btn { display: inline-block; text-decoration: none; color: white; background: #64748b; padding: 10px 20px; border-radius: 6px; transition: 0.2s; font-weight: bold; }
+        .btn:hover { background: #475569; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔔 Hệ thống Sự kiện</h1>
+        <div class="alert">
+            🎉 Kích hoạt sự kiện thành công!<br><br>
+            Hệ thống vừa ghi lại nhật ký truy cập vào file <b>data/log.txt</b>.
+        </div>
+        <a href="/" class="btn">🔙 Quay lại trang chủ</a>
+    </div>
+</body>
+</html>
