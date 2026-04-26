@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng nhập hệ thống</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #e9ecef; margin: 0; }
+        .box { background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 300px; text-align: center; }
+        input { width: 90%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; }
+        button { width: 100%; padding: 10px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 10px; }
+        button:hover { background: #0056b3; }
+        #err { color: red; margin-top: 15px; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>Đăng Nhập Quản Trị</h2>
+        <input type="text" id="u" placeholder="Tài khoản (admin)">
+        <input type="password" id="p" placeholder="Mật khẩu (123456)">
+        <button onclick="login()">Đăng nhập</button>
+        <div id="err"></div>
+    </div>
+
+    <script>
+        window.onload = async () => {
+            const res = await fetch('/profile');
+            if (res.ok) window.location.href = '/';
+        };
+
+        async function login() {
+            const res = await fetch('/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username: u.value, password: p.value })
+            });
+            if (res.ok) {
+                window.location.href = '/';
+            } else {
+                const data = await res.json();
+                document.getElementById('err').textContent = data.message;
+            }
+        }
+    </script>
+</body>
+</html>

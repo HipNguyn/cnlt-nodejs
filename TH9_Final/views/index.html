@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý Sinh viên</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background: #f4f4f4; margin: 0; }
+        .head { display: flex; justify-content: space-between; background: #343a40; color: white; padding: 15px 20px; border-radius: 8px; margin-bottom: 20px; align-items: center;}
+        .head button { background: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; }
+        .wrap { display: flex; gap: 20px; }
+        .box { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); flex: 1; }
+        input { display: inline-block; width: 45%; margin-bottom: 10px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 8px 15px; cursor: pointer; margin-bottom: 5px; background: #007bff; color: white; border: none; border-radius: 4px; }
+        pre { background: #222; color: #0f0; padding: 15px; border-radius: 5px; height: 500px; overflow: auto; }
+    </style>
+</head>
+<body>
+    <div class="head">
+        <h2 style="margin:0;">Dashboard QNU</h2>
+        <button onclick="logout()">🚪 Đăng xuất</button>
+    </div>
+    <div class="wrap">
+        <div class="box">
+            <h3>1. Thống kê & File</h3>
+            <button onclick="api('/heavy-sync')">Sync</button>
+            <button onclick="api('/heavy-async')">Async</button>
+            <button onclick="api('/students/stats')">Thống kê chung</button>
+            <button onclick="api('/students/stats/class')">Thống kê Lớp</button>
+
+            <h3>2. Lọc & Danh sách</h3>
+            <input type="text" id="sname" placeholder="Tên...">
+            <input type="text" id="sclass" placeholder="Lớp (CNTT1)...">
+            <button onclick="api(`/students?name=${sname.value}&class=${sclass.value}`)">Lọc</button>
+            <button onclick="api('/students?sort=age_desc')">Xếp tuổi giảm</button>
+            <br>
+            <button onclick="api('/students?page=1&limit=2')">Trang 1</button>
+            <button onclick="api('/students?page=2&limit=2')">Trang 2</button>
+            <button style="background: #28a745;" onclick="api('/students?page=1&limit=100')">Tất cả</button>
+            
+            <h3>3. Thao tác Sinh viên</h3>
+            <input type="number" id="sid" placeholder="ID (Xóa/Sửa/Xem)" style="width: 90%;">
+            <br>
+            <button onclick="api('/students/' + sid.value)">Xem ID</button>
+            <button style="background: #dc3545;" onclick="api('/students/' + sid.value, 'DELETE')">Xóa mềm</button>
+            
+            <hr>
+            <input type="text" id="addN" placeholder="Tên">
+            <input type="email" id="addE" placeholder="Email">
+            <input type="number" id="addA" placeholder="Tuổi (16-60)">
+            <input type="text" id="addC" placeholder="Lớp">
+            <button style="background: #28a745;" onclick="api('/students', 'POST', {name: addN.value, email: addE.value, age: parseInt(addA.value), class: addC.value})">Thêm mới</button>
+            <button style="background: #ffc107; color: black;" onclick="api('/students/' + sid.value, 'PUT', {name: addN.value, email: addE.value, age: parseInt(addA.value), class: addC.value})">Sửa theo ID</button>
+        </div>
+        <div class="box" style="flex: 1.5;">
+            <h3>Kết quả</h3>
+            <pre id="res">Đang tải...</pre>
+        </div>
+    </div>
+
+    <script>
+        window.onload = async () => {
+            const res = await fetch('/profile');
+            if (!res.ok) window.location.href = '/login';
+            else document.getElementById('res').textContent = "Đã kết nối an toàn!";
+        };
+
+        async function logout() {
+            await fetch('/logout', { method: 'POST' });
+            window.location.href = '/login';
+        }
+
+        async function api(url, method = 'GET', body = null) {
+            const opt = { method, headers: { 'Content-Type': 'application/json' } };
+            if (body) opt.body = JSON.stringify(body);
+            try {
+                const r = await fetch(url, opt);
+                if (r.status === 401) { window.location.href = '/login'; return; }
+                const data = await r.json();
+                document.getElementById('res').textContent = JSON.stringify(data, null, 4);
+            } catch (e) {
+                document.getElementById('res').textContent = "Lỗi kết nối server!";
+            }
+        }
+    </script>
+</body>
+</html>
