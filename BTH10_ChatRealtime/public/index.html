@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ứng dụng Chat Realtime</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div id="login-container">
+        <div class="login-box">
+            <h2>Đăng nhập Chat</h2>
+            <input type="text" id="username-input" placeholder="Nhập tên của bạn..." onkeypress="if(event.key === 'Enter') joinChat()">
+            <button onclick="joinChat()">Vào phòng</button>
+        </div>
+    </div>
+
+    <div id="chat-container" class="hidden">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h3 id="online-count">Đang Online (0)</h3>
+                <span id="my-name-display"></span>
+            </div>
+            <ul id="user-list"></ul>
+        </div>
+
+        <div class="main-chat">
+            <div class="chat-header">
+                <h3 id="chat-with-name">Chọn một người để bắt đầu chat</h3>
+            </div>
+            <div id="chat-messages" class="chat-messages"></div>
+            <div class="chat-input hidden" id="chat-input-area">
+                <input type="text" id="message-input" placeholder="Nhắn tin..." onkeypress="handleKeyPress(event)">
+                <button onclick="sendMessage()">Gửi</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="client.js"></script>
+</body>
+</html>
